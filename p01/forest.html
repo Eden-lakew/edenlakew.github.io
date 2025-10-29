@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+     <!-- <script src="https://aframe.io/releases/1.7.1/aframe.min.js" crossorigin="anonymous"></script> -->
   </head>
   <body>
+    <script src="../js/aframe.min.js"></script>
     <a-scene>
+      <a-assets>
+        <img id="forest" src="http://localhost:8000/p01/IMAGES/Moving_Forest_1050_700.webp" crossorigin="anonymous">
+      </a-assets>
       <a-sky
-        src="./IMAGES/Moving_Forest_1050_700.webp"
-		position="-2.5  0 -1.5"
+        src="#forest"	position="-2.5  0 -1.5"
       ></a-sky>
       <a-text
         font="kelsonsans"
