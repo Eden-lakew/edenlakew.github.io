@@ -1,41 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
-     <script src="https://aframe.io/releases/1.7.1/aframe.min.js" crossorigin="anonymous"></script>
-     
-     
+    <meta charset="utf-8">
+    <title>Forest Scene</title>
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
   </head>
   <body>
-    <script>
-     document.addEventListener('DOMContentLoaded', () => {
-        const isLocal = ['localhost','127.0.0.1','[::1]'].includes(location.hostname);
-        const src = isLocal
-          ? 'http://localhost:8000/p01/IMAGES/Moving_Forest_1050_700.webp'
-          : './IMAGES/Moving_Forest_1050_700.webp';
-
-        const img = document.getElementById('forest');
-        img.setAttribute('src', src);        // set it
-
-        // once assets are ready, use it
-        document.querySelector('a-assets').addEventListener('loaded', () => {
-          document.getElementById('mySky')
-            .setAttribute('material', 'src: #forest');
-        });
-      });
-      </script>
     <a-scene>
+
+      <!-- Assets -->
       <a-assets>
-        <img id="forest"  crossorigin="anonymous"> <!-- src="http://localhost:8000/p01/IMAGES/Moving_Forest_1050_700.webp"-->
+        <!-- Use your Glitch URL here if uploaded -->
+        <img id="forest" src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Rainbow_on_the_Azores_%E2%80%93_360%C2%B0_drone_shot.jpg" crossorigin="anonymous">
       </a-assets>
-      <a-sky id="mySky"
-        src="#forest"	position="-2.5  0 -1.5"
-      ></a-sky>
+
+      <!-- Sky Background -->
+      <a-sky src="#forest" rotation="0 -90 0"></a-sky>
+
+      <!-- Geometric Objects -->
+      <a-box position="-1 0.5 -3" color="red"></a-box>
+      <a-sphere position="1 1.2 -4" radius="1" color="blue"></a-sphere>
+      <a-cylinder position="0 0.75 -2" radius="0.4" height="1.5" color="green"></a-cylinder>
+
+      <!-- Text -->
       <a-text
-        font="kelsonsans"
-        value="HELLO A-Frame!!!"
+        value="Welcome to My Forest Scene!"
         width="6"
-        position="-2.5  1.5 -2.5"  <!-- Position ! -->
-      ></a-text>
+        align="center"
+        position="0 2 -3"
+        color="#FFFFFF">
+      </a-text>
+
+      <!-- Camera -->
+      <a-entity camera look-controls position="0 1.6 0"></a-entity>
+
     </a-scene>
   </body>
 </html>

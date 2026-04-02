@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Solar System with Stars</title>
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+
+      <!-- Assets -->
+      <a-assets>
+        <img id="sunTex" src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Sun_in_February.jpg" crossorigin="anonymous">
+        <img id="mercuryTex" src="https://upload.wikimedia.org/wikipedia/commons/3/30/Mercury_in_color_-_Prockter07_centered.jpg" crossorigin="anonymous">
+        <img id="venusTex" src="https://upload.wikimedia.org/wikipedia/commons/c/c7/PIA23791-Venus-RealAndEnhancedContrastViews-20200608_%28cropped%29.jpg" crossorigin="anonymous">
+        <img id="earthTex" src="https://upload.wikimedia.org/wikipedia/commons/6/61/Blue_Marble_Western_Hemisphere.jpg" crossorigin="anonymous">
+        <img id="marsTex" src="https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg" crossorigin="anonymous">
+        <img id="stars" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Hubble_ultra_deep_field.jpg" crossorigin="anonymous">
+      </a-assets>
+
+      <!-- Sky / stars (should be first so it’s in the background) -->
+      <a-sky src="#stars" rotation="0 -90 0"></a-sky>
+
+      <!-- Sun -->
+ <!-- Sun with color-changing emissive -->
+<a-sphere id="sun"
+          radius="1.5"
+          position="0 1.5 -6"
+          src="#sunTex"
+          material="shader: standard; emissive: orange; emissiveIntensity: 0.5"
+          animation__color="property: material.emissive; from: orange; to: yellow; dur: 2000; loop: true; dir: alternate; delay: 3000"
+          animation__color2="property: material.emissive; from: yellow; to: red; dur: 2000; loop: true; dir: alternate; delay: 5000">
+</a-sphere>
+
+      <!-- Mercury Orbit -->
+      <a-entity position="0 1.5 -6"
+                animation="property: rotation; to: 0 360 0; loop: true; dur: 4000; easing: linear">
+        <a-sphere radius="0.2" position="2 0 0" src="#mercuryTex"></a-sphere>
+      </a-entity>
+
+      <!-- Venus Orbit -->
+      <a-entity position="0 1.5 -6"
+                animation="property: rotation; to: 0 360 0; loop: true; dur: 6000; easing: linear">
+        <a-sphere radius="0.3" position="3 0 0" src="#venusTex"></a-sphere>
+      </a-entity>
+
+      <!-- Earth Orbit -->
+      <a-entity position="0 1.5 -6"
+                animation="property: rotation; to: 0 360 0; loop: true; dur: 8000; easing: linear">
+        <a-sphere radius="0.35" position="4 0 0" src="#earthTex"></a-sphere>
+      </a-entity>
+
+      <!-- Mars Orbit -->
+      <a-entity position="0 1.5 -6"
+                animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear">
+        <a-sphere radius="0.3" position="5 0 0" src="#marsTex"></a-sphere>
+      </a-entity>
+
+      <!-- Lighting -->
+      <a-light type="ambient" color="#888"></a-light>
+      <a-light type="point" intensity="1.5" position="0 1.5 -6"></a-light>
+
+      <!-- Camera with WASD controls -->
+      <a-entity camera 
+                position="0 2 5"
+                wasd-controls="acceleration: 20"
+                look-controls>
+      </a-entity>
+
+    </a-scene>
+  </body>
+</html>
